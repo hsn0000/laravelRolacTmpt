@@ -4,7 +4,7 @@
     <div class="row">
       <h1 class=" ml-4 mb-4 mt-4" >EDIT DATA SISWA</h1>
      @if(session('sukses'))
-      <div class="alert alert-success ml-3 float-center" role="alert">
+      <div class="alert alert-danger ml-3 float-center" role="alert">
           {{session('sukses')}}
        </div>
       @endif

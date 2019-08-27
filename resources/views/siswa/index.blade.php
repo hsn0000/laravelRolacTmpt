@@ -8,17 +8,17 @@
      <div class="col-6">
             <!-- Button trigger modal -->
      <br>
-     <button type="button" class="btn btn-primary float-right ml-1 btn-sm mt-4 " data-toggle="modal" data-target="#exampleModal">
+     <button type="button" class="btn btn-secondary float-right ml-1 btn-sm mt-4 " data-toggle="modal" data-target="#exampleModal">
      Tambah Data Siswa
     </button>
     </div> 
        @if(session('sukses'))
-      <div class="alert alert-success ml-3 float-center" role="alert">
+      <div class="alert alert-warning ml-3 float-center" role="alert">
           {{session('sukses')}}
       </div>
         @endif
        <table class="table table-hover mt-4 ">
-        <thead class="thead-dark">
+        <thead class="thead-dark ml-4">
          <tr>
             <th>Nama Depan</th>
             <th>Nama Belakang</th>
@@ -35,8 +35,10 @@
             <td> {{$siswa->jenis_kelamin}} </td>
             <td> {{$siswa->agama}} </td>
             <td> {{$siswa->alamat}} </td>
-            <td class="ml-4"> <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm">UBAH</a>
-                 <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-4">HAPUS</<a>
+            <td> 
+               <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-4 float-right"
+                onclick="return confirm('YAKIN MAU DI HAPUS ?')">Hapus</<a>
+               <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right">Ubah</a>
             </td>
         @endforeach
 
