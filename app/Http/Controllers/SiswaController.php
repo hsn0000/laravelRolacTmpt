@@ -16,13 +16,19 @@ class SiswaController extends Controller
     public function create(Request $request)
     {
         Siswa::create($request->all());
-        return redirect('/siswa')->with('sukses', 'Data Berhasil Di Input');
+        return redirect('/siswa')->with('sukses', 'Data Berhasil Di Input !');
 
     }
 
     public function edit($id) 
     {
       $siswa = Siswa::find($id);
-      dd($siswa);
+      return view('siswa/edit', ['siswa' => $siswa]);
+    }
+    public function update(Request $request,$id)
+    {
+        $siswa = Siswa::find($id);
+        $siswa->update($request->all());
+        return redirect('/siswa')->with('sukses', 'Data Berhasil Di Update !');
     }
 }
