@@ -21,7 +21,7 @@
 									</div>
 									<div class="profile-stat">
 										<div class="row">
-												<h1>PROFILE</h1>								
+									    	<h1> <i class="lnr lnr-user"> PROFILE</i></h1>								
 										</div>
 									</div>
 								</div>

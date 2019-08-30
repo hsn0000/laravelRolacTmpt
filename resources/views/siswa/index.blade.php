@@ -8,7 +8,7 @@
           <div class="col-md-12">
            <div class="panel">
 						<div class="panel-heading">
-              <h3 class="panel-title">Data Siswa</h3>
+              <h3 class="panel-title"><i class="lnr lnr-user"></i> DATA SISWA</h3>
               <div class="right">
                <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle">Tambah Data Siswa</i></button>
                </div>
@@ -22,7 +22,7 @@
                         <th>JENIS KELAMIN</th>
                         <th>AGAMA</th>
                         <th>ALAMAT</th>
-                        <th>AKSI</th>
+                        <th> <i class="fa fa-random">  AKSI</i> </th>
 											</tr>
 										</thead>
 										<tbody>
@@ -35,8 +35,8 @@
                          <td> {{$siswa->alamat}} </td>
                         <td> 
                           <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-5 float-right"
-                            onclick="return confirm('YAKIN MAU DI HAPUS ?')">Hapus</<a>
-                          <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right">Ubah</a>
+                            onclick="return confirm('YAKIN MAU DI HAPUS ?')"><i class="lnr lnr-trash"> Hapus</i></<a>
+                          <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right"> <i class="fa fa-paper-plane-o"> Ubah</i> </a>
                         </td>
                       </tr>
                     @endforeach
