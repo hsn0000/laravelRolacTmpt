@@ -10,34 +10,31 @@
 						<div class="panel-heading">
               <h3 class="panel-title">Data Siswa</h3>
               <div class="right">
-                <button type="button" class="btn btn-secondary float-right ml-1 btn-sm mt-4 " data-toggle="modal" data-target="#exampleModal">
-                 Tambah Data Siswa
-               </button>
-               <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle"></i></button>
+               <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle">Tambah Data Siswa</i></button>
                </div>
 							</div>
 								<div class="panel-body">
 									<table class="table table-hover">
 										<thead class="thead-info">
 											<tr>
-                         <th>Nama Depan</th>
-                        <th>Nama Belakang</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Agama</th>
-                        <th>Alamat</th>
-                        <th>Aksi</th>
+                         <th>NAMA DEPAN</th>
+                        <th>NAMA BELAKANG</th>
+                        <th>JENIS KELAMIN</th>
+                        <th>AGAMA</th>
+                        <th>ALAMAT</th>
+                        <th>AKSI</th>
 											</tr>
 										</thead>
 										<tbody>
                     @foreach($data_siswa as $siswa)
                       <tr>
-                         <td> {{$siswa->nama_depan}} </td>
-                         <td> {{$siswa->nama_belakang}} </td>
+                         <td> <a href="/siswa/{{$siswa->id}}/profile">{{$siswa->nama_depan}}</a></td>
+                         <td> <a href="/siswa/{{$siswa->id}}/profile">{{$siswa->nama_belakang}}</a></td>
                          <td> {{$siswa->jenis_kelamin}} </td>
                          <td> {{$siswa->agama}} </td>
                          <td> {{$siswa->alamat}} </td>
                         <td> 
-                          <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-4 float-right"
+                          <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-5 float-right"
                             onclick="return confirm('YAKIN MAU DI HAPUS ?')">Hapus</<a>
                           <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right">Ubah</a>
                         </td>
@@ -89,6 +86,10 @@
        <div class="form-group">
          <label for="textarea">Alamat</label>
          <textarea name="alamat" class="form-control"  id="textarea" rows="3"></textarea>
+       </div>
+       <div class="form-group">
+          <label for="textarea">Ambil Gambar</label>
+          <input type="file" name="avatar" class="form-control padding-bottom-30">
        </div>
          </div>
            <div class="modal-footer">
