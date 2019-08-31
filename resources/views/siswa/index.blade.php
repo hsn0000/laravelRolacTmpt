@@ -64,32 +64,49 @@
          <div class="modal-body">
          <form action="/siswa/create" method="post">
            {{csrf_field()}}
-            <div class="form-group">
+            <div class="form-group {{$errors->has('nama_depan') ? 'has-error' : ''}} ">
               <label for="nama_depan">Nama Depan</label>
-              <input name="nama_depan" type="text" class="form-control" id="nama_depan" aria-describedby="text" placeholder="Nama Depan" required>
+              <input name="nama_depan" type="text" class="form-control" id="nama_depan" 
+              aria-describedby="text" placeholder="Nama Depan" required value=" {{old('nama_depan')}} ">
+             @if($errors->has('nama_depan'))
+                <span class="help-block"> {{$errors->first('nama_depan')}} </span>
+             @endif          
           </div>
-          <div class="form-group">
+          <div class="form-group ">
               <label for="nama_belakang">Nama Belakang</label>
-              <input name="nama_belakang" type="text" class="form-control" id="nama_belakang" aria-describedby="text" placeholder="Nama Belakang" required>
+              <input name="nama_belakang" type="text" class="form-control" id="nama_belakang" aria-describedby="text" 
+              placeholder="Nama Belakang" value=" {{old('nama_belakang')}} " required>
           </div>
-          <div class="form-group">
+          <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
               <label for="email">Email</label>
-              <input name="email" type="email" class="form-control" id="email" aria-describedby="text" placeholder="email" required>
+              <input name="email" type="email" class="form-control" id="email" aria-describedby="text" value=" {{old('email')}} placeholder="email" required>
+              @if($errors->has('email'))
+                <span class="help-block"> {{$errors->first('email')}} </span>
+             @endif
           </div>
-     <div class="form-group">
+     <div class="form-group {{$errors->has('jenis_kelamin') ? 'has-error' : ''}}">
        <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+       @if($errors->has('jenis_kelamin'))
+           <span class="help-block"> {{$errors->first('jenis_kelamin')}} </span>
+        @endif
         <select name="jenis_kelamin" class="form-control" id="exampleFormControlSelect1">
-         <option value="L">Laki-Laki</option>
-         <option value="P">Perempuan</option>
+         <option value="L" {{(old('jenis_kelamin') == 'L') ? 'selected' : ''}} >Laki-Laki</option>
+         <option value="P" {{(old('jenis_kelamin') == 'P') ? 'selected' : ''}}>Perempuan</option>
        </select>
      </div>
-     <div class="form-group">
+     <div class="form-group {{$errors->has('agama') ? 'has-error' : ''}}">
         <label for="nama_agama">Agama</label>
-        <input name="agama" type="text" class="form-control" id="agama" aria-describedby="text" placeholder="Agama" required>
+        <input name="agama" type="text" class="form-control" id="agama" aria-describedby="text" value=" {{old('agama')}} placeholder="Agama" required>
+        @if($errors->has('agama'))
+           <span class="help-block"> {{$errors->first('agama')}} </span>
+        @endif
        </div>
-       <div class="form-group">
+       <div class="form-group {{$errors->has('alamat') ? 'has-error' : ''}}">
          <label for="textarea">Alamat</label>
-         <textarea name="alamat" class="form-control"  id="textarea" rows="3"></textarea>
+         <textarea name="alamat" class="form-control" value=" id="textarea" rows="3" >{{old('alamat')}}</textarea>
+         @if($errors->has('alamat'))
+           <span class="help-block"> {{$errors->first('alamat')}} </span>
+        @endif
        </div>
        <div class="form-group">
           <label for="textarea">Ambil Gambar</label>
