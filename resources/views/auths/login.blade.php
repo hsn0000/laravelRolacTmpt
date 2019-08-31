@@ -43,25 +43,27 @@
 									<label for="signin-password" class="control-label sr-only">Password</label>
 									<input name="password" type="password" class="form-control" id="signin-password"  placeholder="Password" required>
 								</div>
-								<div class="form-group clearfix">
+								<!-- <div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">
 										<input type="checkbox">
 										<span>Ingatkan saya</span>
 									</label>
-								</div>
+								</div> -->
 								<button type="submit" class="btn btn-primary btn-lg btn-block">MASUK</button>
-								<div class="bottom">
+								<!-- <div class="bottom">
 									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">lupa password?</a></span>
-								</div>
+								</div> -->
 							</form>
 						</div>
 					</div>
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-                            <h1 class="heading"> Selamat datang di website ini... </h1>
-                            <hr>
-							<p> <i class="lnr lnr-thumbs-up"></i>   @Husin04</p>
+                            <h1 class="heading"> Selamat datang di website ini... <i class="lnr lnr-thumbs-up"></i> </h1>
+							<hr>
+							<br>
+							<p>copyright@Husin04</p>
+							<hr>
 						</div>
 					</div>
 					<div class="clearfix"></div>

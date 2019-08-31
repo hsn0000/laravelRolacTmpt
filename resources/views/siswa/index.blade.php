@@ -56,7 +56,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">TAMBAH KAN DATA SISWA</h5>
+            <h5 class="modal-title" id="exampleModalLabel"><i class="lnr lnr-plus-circle"></i> TAMBAH KAN DATA SISWA</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -71,6 +71,10 @@
           <div class="form-group">
               <label for="nama_belakang">Nama Belakang</label>
               <input name="nama_belakang" type="text" class="form-control" id="nama_belakang" aria-describedby="text" placeholder="Nama Belakang" required>
+          </div>
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input name="email" type="email" class="form-control" id="email" aria-describedby="text" placeholder="email" required>
           </div>
      <div class="form-group">
        <label for="exampleFormControlSelect1">Jenis Kelamin</label>
@@ -93,8 +97,8 @@
        </div>
          </div>
            <div class="modal-footer">
-             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Submit</button>
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary"><i class="lnr lnr-plus-circle"></i>Masukan</button>
             </form>
           </div>
      </div>
