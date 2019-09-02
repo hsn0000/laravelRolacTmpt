@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Siswa;
 use App\User;
+use App\Mapel;
 
 class SiswaController extends Controller
 {
@@ -20,12 +21,15 @@ class SiswaController extends Controller
 
     public function create(Request $request)
     {  
+       
 
         $this->validate($request, [ 
-            'nama_depan' => 'required|min:5',
+            'nama_depan' => 'required|min:4',
+            'nama_belakang' => 'required',
             'email' => 'required|email|unique:users',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
+            'avatar' => 'mimes:jpg,png,jpeg'
             
             ]);
 
@@ -42,7 +46,13 @@ class SiswaController extends Controller
           // insert ke table siswa
         $request->request->add(['user_id' => $user->id]);
         $siswa = Siswa::create($request->all());
-        return redirect('/siswa')->with('sukses', 'Data Berhasil Di Input !');
+        if($request->hasFile('avatar')) 
+        {
+            $request->file('avatar')->move('images', $request->file('avatar')->getClientOriginalName());
+            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+            $siswa->save();
+        }
+        return redirect('/siswa')->with('sukses', 'DATA BERHASIL DI INPUT !');
 
     }
 
@@ -62,19 +72,32 @@ class SiswaController extends Controller
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
         }
-        return redirect('/siswa')->with('sukses', 'Data Berhasil Di Update !');
+        return redirect('/siswa')->with('update', 'Data Berhasil Di Update !');
     }
 
     public function delete($id)
     {
         $siswa = Siswa::find($id);
         $siswa->delete($siswa);
-        return redirect('/siswa')->with('sukses','DATA BERHASIL DI HAPUS !');
+        return redirect('/siswa')->with('danger','DATA BERHASIL DI HAPUS !');
     }
 
     public function profile($id)
     {
        $siswa = Siswa::find($id);
-       return view('siswa.profile', ['siswa' => $siswa]);
+       $matapelajaran = Mapel::all();
+       return view('siswa.profile', ['siswa' => $siswa, 'matapelajaran' => $matapelajaran]);
+    }
+
+    public function addnilai(Request $request,$idsiswa)
+    {
+      $siswa = Siswa::find($idsiswa);
+      if($siswa->mapel()->where('mapel_id',$request->mapel)->exists())
+      {
+          return redirect('siswa/'.$idsiswa.'/profile')->with('error', 'DATA MATA PELAJARAN SUDAH ADA !');
+      }
+      $siswa->mapel()->attach($request->mapel,['nilai' => $request->nilai]);
+
+      return redirect('siswa/'.$idsiswa. '/profile')->with('sukses', 'DATA NILAI BERHASIL DI MASUKAN !');
     }
 }

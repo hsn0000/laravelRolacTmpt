@@ -9,6 +9,21 @@
            <div class="panel">
 						<div class="panel-heading">
               <h3 class="panel-title"><i class="lnr lnr-user"></i> DATA SISWA</h3>
+             @if(session('sukses'))
+			      	<div class="aler alert-success" role="alert">
+				        {{session('sukses')}}
+			      	</div>
+			    	@endif
+            @if(session('update'))
+	      			<div class="aler alert-warning" role="alert">
+				         {{session('update')}}
+		      		</div>
+		    		@endif
+            @if(session('danger'))
+		     		<div class="aler alert-danger" role="alert">
+				       {{session('danger')}}
+			    	</div>
+			    	@endif
               <div class="right">
                <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle">Tambah Data Siswa</i></button>
                </div>
@@ -22,7 +37,7 @@
                         <th>JENIS KELAMIN</th>
                         <th>AGAMA</th>
                         <th>ALAMAT</th>
-                        <th> <i class="fa fa-random">  AKSI</i> </th>
+                        <th> AKSI <i class="fa fa-random"></i> <i class="fa fa-refresh fa-spin"></i></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -62,7 +77,7 @@
             </button>
           </div>
          <div class="modal-body">
-         <form action="/siswa/create" method="post">
+         <form action="/siswa/create" method="post" enctype="multipart/form-data">
            {{csrf_field()}}
             <div class="form-group {{$errors->has('nama_depan') ? 'has-error' : ''}} ">
               <label for="nama_depan">Nama Depan</label>
@@ -79,7 +94,7 @@
           </div>
           <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
               <label for="email">Email</label>
-              <input name="email" type="email" class="form-control" id="email" aria-describedby="text" value=" {{old('email')}} placeholder="email" required>
+              <input name="email" type="email" class="form-control" id="email" aria-describedby="text" value=" {{old('email')}}" placeholder="email" required>
               @if($errors->has('email'))
                 <span class="help-block"> {{$errors->first('email')}} </span>
              @endif
@@ -96,7 +111,7 @@
      </div>
      <div class="form-group {{$errors->has('agama') ? 'has-error' : ''}}">
         <label for="nama_agama">Agama</label>
-        <input name="agama" type="text" class="form-control" id="agama" aria-describedby="text" value=" {{old('agama')}} placeholder="Agama" required>
+        <input name="agama" type="text" class="form-control" id="agama" aria-describedby="text" value=" {{old('agama')}}" placeholder="Agama" required>
         @if($errors->has('agama'))
            <span class="help-block"> {{$errors->first('agama')}} </span>
         @endif
@@ -108,9 +123,12 @@
            <span class="help-block"> {{$errors->first('alamat')}} </span>
         @endif
        </div>
-       <div class="form-group">
+       <div class="form-group {{$errors->has('avatar') ? 'has-error' : ''}}">
           <label for="textarea">Ambil Gambar</label>
           <input type="file" name="avatar" class="form-control padding-bottom-30">
+          @if($errors->has('avatar'))
+           <span class="help-block"> {{$errors->first('avatar')}} </span>
+        @endif
        </div>
          </div>
            <div class="modal-footer">
