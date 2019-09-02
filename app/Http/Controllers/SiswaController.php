@@ -52,7 +52,7 @@ class SiswaController extends Controller
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
         }
-        return redirect('/siswa')->with('sukses', 'DATA BERHASIL DI INPUT !');
+        return redirect('/siswa')->with('sukses', 'DATA BERHASIL DI TAMBAHKAN !');
 
     }
 
@@ -72,7 +72,7 @@ class SiswaController extends Controller
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
         }
-        return redirect('/siswa')->with('update', 'Data Berhasil Di Update !');
+        return redirect('/siswa')->with('update', 'DATA BERHASIL DI UPDATE !');
     }
 
     public function delete($id)
@@ -86,7 +86,22 @@ class SiswaController extends Controller
     {
        $siswa = Siswa::find($id);
        $matapelajaran = Mapel::all();
-       return view('siswa.profile', ['siswa' => $siswa, 'matapelajaran' => $matapelajaran]);
+
+       //menyiapkan data untuk chart
+       $categories = [];
+       $data = [];
+
+       foreach($matapelajaran as $mp)
+       {
+           if($siswa->mapel()->wherePivot('mapel_id',$mp->id)->first())
+       
+       {
+           $categories[] = $mp->nama;
+           $data[] = $siswa->mapel()->wherePivot('mapel_id',$mp->id)->first()->pivot->nilai;
+       }
+    }
+
+       return view('siswa.profile', ['siswa' => $siswa, 'matapelajaran' => $matapelajaran,'categories' => $categories, 'data' =>$data]);
     }
 
     public function addnilai(Request $request,$idsiswa)
