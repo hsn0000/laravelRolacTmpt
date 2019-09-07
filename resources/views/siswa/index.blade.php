@@ -50,7 +50,7 @@
                          <td> {{$siswa->alamat}} </td>
                         <td> 
                           <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-5 float-right"
-                            onclick="return confirm('YAKIN MAU DI HAPUS ?')"><i class="lnr lnr-trash"> Hapus</i></<a>
+                            onclick="return confirm('YAKIN MAU MENGHAPUS DATA SISWA ?')"><i class="lnr lnr-trash"> Hapus</i></a>
                           <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right"> <i class="fa fa-paper-plane-o"> Ubah</i> </a>
                         </td>
                       </tr>
