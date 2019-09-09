@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\SiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Siswa;
 use App\User;
 use App\Mapel;
+use PDF;
 
 class SiswaController extends Controller
 {
@@ -121,5 +124,18 @@ class SiswaController extends Controller
       $siswa = Siswa::find($idsiswa);
       $siswa->mapel()->detach($idmapel);
       return redirect()->back()->with('error', 'DATA NILAI BERHASIL DI HAPUS !');
+    }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new SiswaExport, 'Siswa.xlsx');
+    }
+
+    public function exportPdf()
+    {
+        $siswa = Siswa::all();
+        $pdf = PDF::loadView('export.siswapdf', ['siswa' => $siswa]);
+       
+        return $pdf->download('Siswa.pdf');
     }
 }

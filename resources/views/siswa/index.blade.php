@@ -25,7 +25,10 @@
 			    	</div>
 			    	@endif
               <div class="right">
-               <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle">Tambah Data Siswa</i></button>
+               <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle" id="tambahSiswa">Tambah Data Siswa</i></button>
+             <br>
+               <a href="/siswa/exportexcel" class="btn btn-sm btn-primary" id="exportExcel">ExportExcel</a>
+               <a href="/siswa/exportpdf" class="btn btn-sm btn-info" id="exportPdf">ExportPdf</a>
                </div>
 							</div>
 								<div class="panel-body">
