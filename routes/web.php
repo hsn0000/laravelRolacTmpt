@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postLogin','AuthController@postLogin');  
-Route::get('/logout','AuthController@logout');  
+Route::get('/logout','AuthController@logout'); 
+ 
 
 Route::group(['middleware' => ['auth','checkRole:admin']],function() {
     Route::get('/siswa', 'SiswaController@index');
@@ -30,10 +31,13 @@ Route::group(['middleware' => ['auth','checkRole:admin']],function() {
     Route::get('/siswa/{id}/profile', 'SiswaController@profile');
     Route::post('/siswa/{id}/addnilai', 'SiswaController@addnilai');
     Route::get('/siswa/{id}/{idmapel}/deletenilai','SiswaController@deletenilai');
+    Route::get('/guru/{id}/profile','GuruController@profile');
+
      
 });
 
-Route::group(['middleware' => ['auth','checkRole:admin']],function() {
+Route::group(['middleware' => ['auth','checkRole:admin,siswa']],function() {
+
     Route::get('/dashboard', 'DashboardController@index');
    
 });

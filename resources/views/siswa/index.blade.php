@@ -37,6 +37,7 @@
                         <th>JENIS KELAMIN</th>
                         <th>AGAMA</th>
                         <th>ALAMAT</th>
+                        <th>RATA-RATA NILAI</th>
                         <th> AKSI <i class="fa fa-random"></i> <i class="fa fa-refresh fa-spin"></i></th>
 											</tr>
 										</thead>
@@ -48,6 +49,7 @@
                          <td> {{$siswa->jenis_kelamin}} </td>
                          <td> {{$siswa->agama}} </td>
                          <td> {{$siswa->alamat}} </td>
+                         <td> {{$siswa->rataRataNilai()}} </td>
                         <td> 
                           <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-5 float-right"
                             onclick="return confirm('YAKIN MAU MENGHAPUS DATA SISWA ?')"><i class="lnr lnr-trash"> Hapus</i></a>

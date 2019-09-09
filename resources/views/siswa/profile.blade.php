@@ -41,10 +41,10 @@
                                                {{$siswa->mapel->count()}}<span>PELAJARAN</span>
 											</div>		
 											<div class="col-md-4 stat-item">
-                                             16 <span>STUDI KASUS</span>
+                                             {{$siswa->rataRataNilai()}} <span>Rata-Rata Nilai</span>
 											</div>	
 											<div class="col-md-4 stat-item">
-                                             86,4 <span>RATA RATA</span>
+                                             25 <span>Studi Kasus</span>
 											</div>						
 										</div>
 									</div>
@@ -91,6 +91,7 @@
 												<th>NAMA</th>
 												<th>SEMESTER</th>
 												<th>NILAI</th>
+												<th>GURU</th>
 												<th>AKSI</th>
 											</tr>
 										</thead>
@@ -101,8 +102,9 @@
 												<td> {{$mapel->nama}} </td>
 												<td> {{$mapel->semester}} </td>
 												<td> <a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai " data-title="Masukan nilai">
-												{{$mapel->pivot->nilai}}</a></td>
-											<td> <a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/deletenilai" class="btn btn-danger btn-sm ml-5 float-right"
+											 {{$mapel->pivot->nilai}}</a></td>
+                                                <td><a href="/guru/{{$mapel->guru_id}}/profile"> {{$mapel->guru->nama}} </a></td>    
+											    <td><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/deletenilai" class="btn btn-danger btn-sm ml-5 float-right"
                                                  onclick="return confirm('YAKIN MAU MENGHAPUS NILAI SISWA ?')"><i class="lnr lnr-trash"></i></a></td>
 										   </tr>
 										@endforeach
