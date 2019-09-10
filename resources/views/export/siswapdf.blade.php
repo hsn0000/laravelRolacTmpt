@@ -1,4 +1,4 @@
-<table class="hover">
+<table class="table" style="border:1px solid #ddd">
      <thead>
        <tr>
            <td>NAMA LENGKAP</td>
@@ -15,6 +15,6 @@
             <td> {{$s->agama}} </td>
             <td> {{$s->rataRataNilai()}} </td>
         </tr>
-        @foreach
+        @endforeach
     </tbody>
-</table>
+</table> 
