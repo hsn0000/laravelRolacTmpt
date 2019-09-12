@@ -54,8 +54,7 @@
                          <td> {{$siswa->alamat}} </td>
                          <td> {{$siswa->rataRataNilai()}} </td>
                         <td> 
-                          <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm ml-5 float-right"
-                            onclick="return confirm('YAKIN MAU MENGHAPUS DATA SISWA ?')"><i class="lnr lnr-trash"> Hapus</i></a>
+                          <a href="#" class="btn btn-danger btn-sm ml-5 float-right delete" siswa-id="{{$siswa->id}}"><i class="lnr lnr-trash"> Hapus</i></a>
                           <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right"> <i class="fa fa-paper-plane-o"> Ubah</i> </a>
                         </td>
                       </tr>
@@ -143,5 +142,26 @@
           </div>
      </div>
 
+@stop
+
+@section('footer')
+    <script>
+       $('.delete').click(function(){
+           var siswa_id = $(this).attr('siswa-id');
+           swal({
+            title: " HAllo..",
+            text: " apa anda yakin ingin menghapus data siswa? "+siswa_id+" ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+              console.log(willDelete);
+            if (willDelete) {
+               window.location = "/siswa/"+siswa_id+"/delete";
+            } 
+          });
+       });
+    </script>
 @stop
 
