@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'SiteController@home');
+Route::get('/register','SiteController@register');
 Route::get('/about', 'SiteController@about');
 
 Route::get('/login', 'AuthController@login')->name('login');
