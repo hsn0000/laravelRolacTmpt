@@ -55,12 +55,15 @@
                          <td> {{$siswa->rataRataNilai()}} </td>
                         <td> 
                           <a href="#" class="btn btn-danger btn-sm ml-5 float-right delete" siswa-id="{{$siswa->id}}"><i class="lnr lnr-trash"> Hapus</i></a>
-                          <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right"> <i class="fa fa-paper-plane-o"> Ubah</i> </a>
+                        </td>
+                        <td>
+                        <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm float-right"> <i class="fa fa-paper-plane-o"> Ubah</i> </a>
                         </td>
                       </tr>
                     @endforeach
 										</tbody>
 									</table>
+                  {{$data_siswa->links()}}
 								</div>
 							</div>
            </div>
