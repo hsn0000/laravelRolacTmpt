@@ -10,20 +10,20 @@
 			<div class="panel-heading">
               <h3 class="panel-title"><i class="lnr lnr-user"></i>Posts</h3>
               <div class="right">
-               <a href="#" class="btn btn-sm btn-info" id="exportPdf">Tambah Post Baru</a>
+               <a href=" {{route('posts.add')}} " class="btn btn-sm btn-info" id="exportPdf">Tambah Post Baru</a>
            </div>
 			</div>
 			 <div class="panel-body">
 				<table class="table table-hover">
 			      <thead class="thead-info">
-					<tr>
-                        <th>ID</th>
-                        <th>TITLE</th>
-                        <th>USER</th>
-                        <th> AKSI <i class="fa fa-random"></i> <i class="fa fa-refresh fa-spin"></i></th>
-					</tr>
-				</thead>
-				<tbody>
+					      <tr>
+                  <th>ID</th>
+                  <th>TITLE</th>
+                 <th>USER</th>
+                <th> AKSI <i class="fa fa-random"></i> <i class="fa fa-refresh fa-spin"></i></th>
+				       </tr>
+			      	</thead>
+			       	<tbody>
                     @foreach($posts as $post)
                       <tr>
                         <td> {{$post->id}} </td>

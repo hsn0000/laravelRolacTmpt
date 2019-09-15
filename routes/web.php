@@ -34,7 +34,17 @@ Route::group(['middleware' => ['auth','checkRole:admin']],function() {
 
     Route::get('/guru/{id}/profile','GuruController@profile');
 
-    Route::get('/posts', 'PostController@index');
+    Route::get('/posts', 'PostController@index')->name('posts.index');
+
+    Route::get('post/add', [
+        'uses' => 'PostController@add',
+        'as' => 'posts.add'
+    ]);
+
+    Route::post('post/create', [
+        'uses' => 'PostController@create',
+        'as' => 'posts.create',
+    ]);
     
      
 });
