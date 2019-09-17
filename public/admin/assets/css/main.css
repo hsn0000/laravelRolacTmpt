@@ -17,13 +17,12 @@
  ********************/
 
  #tambahSiswa{
-  margin-top: 40px;
-  margin-left: 40px;
+   margin-right: 10px;
  }
 
  #exportExcel{
       margin-top: 8px;
-      margin-right: 2px;
+      margin-right: 11px;
  }
 
  #exportPdf {

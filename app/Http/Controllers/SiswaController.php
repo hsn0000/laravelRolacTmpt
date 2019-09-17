@@ -17,7 +17,7 @@ class SiswaController extends Controller
         if($request->has('cari')) {
             $data_siswa = Siswa::where('nama_depan','LIKE','%' .$request->cari. '%')->paginate(20);
         }else{
-            $data_siswa = Siswa::paginate(20);
+            $data_siswa = Siswa::All();
         }
         return view('siswa.index',['data_siswa'=> $data_siswa]);
     }
@@ -138,4 +138,22 @@ class SiswaController extends Controller
        
         return $pdf->download('Siswa.pdf');
     }
+
+    // public function getdatasiswa()
+    // {
+    //     $siswa = Siswa::select('siswa.*');
+
+    //     return \DataTables::eloquent($siswa)
+    //     ->addColumn('nama_lengkap',function($s) {
+    //         return $s->nama_depan.''.$s->nama_belakang;
+    //     })
+    //     ->addColumn('rata2_nilai',function($s) {
+    //         return $s->rataRataNilai();            
+    //     })
+    //     ->addColumn('aksi',function($s){
+    //         return '<a href="#" class="btn btn-warning">Edit</a>';
+    //     })
+    //     ->rawColumns(['nama_lengkap','rata2_nilai','aksi'])->
+    //     toJson();  
+    // }
 }

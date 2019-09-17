@@ -25,14 +25,13 @@
 			    	</div>
 			    	@endif
               <div class="right">
-               <button class="btn" data-toggle="modal" data-target="#exampleModal" ><i class="lnr lnr-plus-circle" id="tambahSiswa">Tambah Data Siswa</i></button>
-             <br>
+               <button class="btn" data-toggle="modal" data-target="#exampleModal" id="tambahSiswa" ><i class="lnr lnr-plus-circle" >Tambah Data Siswa</i></button>
                <a href="/siswa/exportexcel" class="btn btn-sm btn-primary" id="exportExcel">ExportExcel</a>
                <a href="/siswa/exportpdf" class="btn btn-sm btn-info" id="exportPdf">ExportPdf</a>
                </div>
 							</div>
 								<div class="panel-body">
-									<table class="table table-hover">
+									<table class="table table-hover" id="datatable">
 										<thead class="thead-info">
 											<tr>
                          <th>NAMA DEPAN</th>
@@ -42,6 +41,7 @@
                         <th>ALAMAT</th>
                         <th>RATA-RATA NILAI</th>
                         <th> AKSI <i class="fa fa-random"></i> <i class="fa fa-refresh fa-spin"></i></th>
+                        <th></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -63,7 +63,7 @@
                     @endforeach
 										</tbody>
 									</table>
-                  {{$data_siswa->links()}}
+              
 								</div>
 							</div>
            </div>
@@ -149,7 +149,10 @@
 
 @section('footer')
     <script>
-       $('.delete').click(function(){
+       $(document).ready(function() {
+          $('#datatable').DataTable()
+
+        $('.delete').click(function(){
            var siswa_id = $(this).attr('siswa-id');
            swal({
             title: " HAllo..",
@@ -165,6 +168,8 @@
             } 
           });
        });
+    });
+
     </script>
 @stop
 
